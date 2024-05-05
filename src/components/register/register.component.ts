@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../app/app.config';
 
 @Component({
   selector: 'app-register',
@@ -10,17 +12,18 @@ export class RegisterComponent {
   username: string = "";
   password: string = "";
 
-  registerUser() {
-    // Implement registration logic here
-    console.log('Name:', this.name);
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
-    // Add your registration API call here
+  constructor(private http: HttpClient) {}
 
-    // For demonstration purposes, let's assume registration is successful
-    this.showAlert(`User registered successfully.
-    Name: ${this.name} 
-    Username: ${this.username}`);
+  registerUser(userData: any) {
+    // console.log('Name:', this.name);
+    // console.log('Username:', this.username);
+    // console.log('Password:', this.password);
+    
+    // this.showAlert(`User registered successfully.
+    // Name: ${this.name} 
+    // Username: ${this.username}`);
+
+    return this.http.post(`${environment.apiUrl}/register`, userData);
   }
 
   showAlert(message: string) {
