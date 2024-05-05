@@ -1,16 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { environment } from '../../app/app.config';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
-  username: string = 'Jack Reacher'; // Replace with actual user data
+export class ProfileComponent implements OnInit {
+  // username: string = 'Jack Reacher'; 
+  user: any;
+  constructor(private http: HttpClient) {}
 
-  // You can add more properties for user data here
-  
-  constructor() {
-    // You can fetch user data from a service or API here
+  ngOnInit() {
+    this.fetchUserProfile();
+  }
+
+  fetchUserProfile() {
+    this.http.get(`${environment.apiUrl}/profile`).subscribe((data: any) => {
+      this.user = data;
+    });
   }
 }
