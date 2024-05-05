@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from '../../app/app.config';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +11,16 @@ export class LoginComponent {
   username: string = ''; 
   password: string = ''; 
 
-  loginUser() {
-    // Implement login logic here
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
-    // Add your login API call here
+  constructor(private http: HttpClient) {}
 
-    this.showAlert(`User logged in successfully.
-    Username: ${this.username}`);
+  loginUser(userData: any) {
+    // console.log('Username:', this.username);
+    // console.log('Password:', this.password);
+
+    // this.showAlert(`User logged in successfully.
+    // Username: ${this.username}`);
+
+    return this.http.post(`${environment.apiUrl}/login`, userData);
   }
 
   showAlert(message: string) {
