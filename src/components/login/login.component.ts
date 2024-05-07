@@ -13,8 +13,19 @@ export class LoginComponent {
     console.log('Username:', this.username);
     console.log('Password:', this.password);
 
-    this.showAlert(`User logged in successfully.
-    Username: ${this.username}`);
+    // Retrieve users from local storage
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+    // Find user with matching username and password
+    const user = users.find((u: any) => u.username === this.username && u.password === this.password);
+
+    if (user) {
+      // Success: User logged in
+      this.showAlert('User logged in successfully.');
+    } else {
+      // Error: Wrong credentials
+      this.showAlert('Wrong credentials.');
+    }
   }
 
   showAlert(message: string) {
