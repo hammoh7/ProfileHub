@@ -15,6 +15,23 @@ export class RegisterComponent {
     console.log('Username:', this.username);
     console.log('Password:', this.password);
     
+    // Create an object to represent the user
+    const user = {
+      name: this.name,
+      username: this.username,
+      password: this.password
+    };
+    
+    // Get existing users from local storage or initialize as empty array
+    const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+    
+    // Add the new user to the array of users
+    existingUsers.push(user);
+    
+    // Store the updated users array in local storage
+    localStorage.setItem('users', JSON.stringify(existingUsers));
+    
+    // Show alert
     this.showAlert(`User registered successfully.
     Name: ${this.name} 
     Username: ${this.username}`);
