@@ -17,4 +17,37 @@
   .profile-info strong {
     font-weight: bold;
   }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #dee2e6;
+  }
+  
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: #e9ecef;
+  }
   

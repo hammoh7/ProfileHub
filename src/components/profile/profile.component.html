@@ -1,7 +1,21 @@
 <div class="container">
-  <h2>User Profile</h2>
-  <div class="profile-info">
-    <p><strong>Username:</strong> {{ username }}</p>
-    <!-- Add more user data fields here -->
+  <h2>User Profiles</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <!-- Add more user data fields here -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userData">
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <!-- Add more user data fields here -->
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

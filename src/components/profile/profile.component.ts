@@ -5,6 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
-  username: string = '';
+export class ProfileComponent implements OnInit {
+  userData: any;
+
+  ngOnInit() {
+    // Retrieve users from local storage
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    
+    // Set the userData property to the array of users
+    this.userData = users;
+  }
 }
